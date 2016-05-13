@@ -9,6 +9,9 @@
     "default_icon": "resources/icon.png",
     "default_popup": "popup.html"
   },
+  "background": {
+    "scripts": ["background.js"]
+  },
   "icons": {
     "64":"resources/icon.png"
   },

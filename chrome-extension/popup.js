@@ -1,1 +1,1 @@
-alert("Welcome to smart notes")
+document.write("Welcome to smart notes")
