@@ -1,1 +1,2 @@
-alert("This is background js")
+/*
+alert("This is background js")*/
