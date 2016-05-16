@@ -1,7 +1,5 @@
-var background_port = chrome.runtime.connect({name: "Popupjs"});
-
 window.onload =  function () {
-	
+
 	//Function to set Text Box with set Jira Domain
 	chrome.runtime.sendMessage({type: "get_domain"}, function(response)
 	{
