@@ -15,9 +15,9 @@ var exception_handler = {
     },
     
     /**
-     * Called if user is not logged in. 
-     * if jira Domain is set open JIRA cloud.
-     * else open popup to make user enter jira domain
+     * Called if user is not logged in 
+     * if jira domain is set open jira cloud login page
+     * else open popup to make user enter jira domain.
      */
     handleAuthentication: function () {
         if(CURRENT_USER_DOMAIN != "") {
