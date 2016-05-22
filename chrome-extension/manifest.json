@@ -15,8 +15,7 @@
                  "background.js",
                  "engine/utility/jira_domain.js",
                  "engine/utility/exception_handler.js",
-                  "engine/global_message.js"],
-    "persistent": false
+                 "engine/global_message.js"]
   },
   "icons": {
     "64":"resources/icon.png"
@@ -24,8 +23,7 @@
   "permissions": [
     "activeTab",          
     "https://*/*",          //set permissions for all pages
-    "storage",               //for chrome storage api
-    "tabs"
+    "storage"              //for chrome storage api
   ]
 
 

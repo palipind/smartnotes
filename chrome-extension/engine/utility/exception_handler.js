@@ -24,7 +24,7 @@ var exception_handler = {
             window.open('https://'+CURRENT_USER_DOMAIN+'/', '_blank');
         }
         else {
-            window.open("popup/popup.html", "extension_popup", "width=300,height=400,status=no,scrollbars=yes,resizable=no");
+            window.open("popup/popup.html", "extension_popup", "width=400,height=100");
         }
     }
 };
