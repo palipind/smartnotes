@@ -10,8 +10,9 @@
     "default_popup": "popup/popup.html"
   },
   "background": {
-    "scripts": ["background.js"]
+    "scripts": ["resources/jquery-2.2.4.js","background.js"]
   },
+
   "icons": {
     "64":"resources/icon.png"
   },
