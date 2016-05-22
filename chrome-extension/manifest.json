@@ -10,18 +10,22 @@
     "default_popup": "popup/popup.html"
   },
   "background": {
-    "scripts": [ "resources/jquery-2.2.4.js",
-                 "background.js",
-                 "engine/utility/jira_domain.js"]
-  },
 
+   "scripts": [ "resources/jquery-2.2.4.js",
+                 "background.js",
+                 "engine/utility/jira_domain.js",
+                 "engine/utility/exception_handler.js",
+                  "engine/global_message.js"],
+    "persistent": false
+  },
   "icons": {
     "64":"resources/icon.png"
   },
   "permissions": [
     "activeTab",          
     "https://*/*",          //set permissions for all pages
-    "storage"               //for chrome storage api
+    "storage",               //for chrome storage api
+    "tabs"
   ]
 
 
