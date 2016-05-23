@@ -12,7 +12,8 @@
   "background": {
     "scripts": [ "resources/jquery-2.2.4.js",
                  "background.js",
-                 "engine/utility/jira_domain.js"]
+                 "engine/utility/jira_domain.js",
+                 "engine/utility/global_constants.js"]
   },
 
   "icons": {

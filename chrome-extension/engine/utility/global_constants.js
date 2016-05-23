@@ -1,0 +1,1 @@
+var CURRENT_USER_DOMAIN = null;//Initially null

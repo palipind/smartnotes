@@ -1,5 +1,4 @@
 window.onload =  function () {
-	
 	//Function to set Text Box with set Jira Domain
 	chrome.runtime.sendMessage({type: "get_domain"}, function (response) {
 		if(response.type == "Error") {
@@ -17,7 +16,7 @@ window.onload =  function () {
 				console.log("Error: " + response.emsg);
 				console.log("Resetting the user domain");
 				chrome.runtime.sendMessage({type: "get_domain"}, function (response) {
-					if(response.type = "Error") {
+					if(response.type == "Error") {
 						document.getElementById('user_domain').value = "";
 					} else {
 						document.getElementById('user_domain').value = response.user_domain;
