@@ -8,7 +8,7 @@ var exception_handler = {
         var errorMessage = JSON.parse(xhr.responseText);
         console.log("Error" +errorMessage);
         switch(true) {
-            case (xhr.status == 400 && errorMessage.errorMessages[0] == global_message.AUTHENTICATION_ERROR) :
+            case (xhr.status == 400 && errorMessage.errorMessages[0] == GLOBAL_MESSAGE.AUTHENTICATION_ERROR) :
                 exception_handler.handleAuthentication();
                 break;
         }

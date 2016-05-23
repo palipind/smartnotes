@@ -15,8 +15,7 @@
                  "background.js",
                  "engine/utility/jira_domain.js",
                  "engine/utility/global_constants.js",
-                 "engine/utility/exception_handler.js",
-                 "engine/global_message.js"]
+                 "engine/utility/exception_handler.js"]
   },
   "icons": {
     "64":"resources/icon.png"
