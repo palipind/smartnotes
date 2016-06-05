@@ -9,7 +9,7 @@ var exception_handler = {
         console.log("Error" +errorMessage);
         switch(true) {
             case (xhr.status == 400 && errorMessage.errorMessages[0] == GLOBAL_MESSAGE.AUTHENTICATION_ERROR) :
-                exception_handler.handleAuthentication();
+                this.handleAuthentication();
                 break;
         }
     },
@@ -20,7 +20,7 @@ var exception_handler = {
      * else open popup to make user enter jira domain.
      */
     handleAuthentication: function () {
-        if(CURRENT_USER_DOMAIN != "") {
+        if(CURRENT_USER_DOMAIN != "" || CURRENT_USER_DOMAIN != null) {
             window.open('https://'+CURRENT_USER_DOMAIN+'/', '_blank');
         }
         else {
