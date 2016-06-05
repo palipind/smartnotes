@@ -24,6 +24,13 @@ var exception_handler = {
         if(domain != null) {
             window.open('https://'+domain+'/', '_blank');
         }
+        else {
+            this.handleUnsetDomain();
+        }
+    },
+
+    handleUnsetDomain: function () {
+        window.open("popup/popup.html", "extension_popup", "width=400,height=100");
     }
 };
 

@@ -21,9 +21,6 @@ var jira_domain = ( function () {
             if(CURRENT_USER_DOMAIN != "" || CURRENT_USER_DOMAIN != null) {
                 return CURRENT_USER_DOMAIN;
             }
-            else {
-                window.open("popup/popup.html", "extension_popup", "width=400,height=100");
-            }
             return null;
         }
 	};
