@@ -20,11 +20,9 @@ var exception_handler = {
      * else open popup to make user enter jira domain.
      */
     handleAuthentication: function () {
-        if(CURRENT_USER_DOMAIN != "" || CURRENT_USER_DOMAIN != null) {
-            window.open('https://'+CURRENT_USER_DOMAIN+'/', '_blank');
-        }
-        else {
-            window.open("popup/popup.html", "extension_popup", "width=400,height=100");
+        var domain = jira_domain.getJiraDomain()
+        if(domain != null) {
+            window.open('https://'+domain+'/', '_blank');
         }
     }
 };

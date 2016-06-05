@@ -16,6 +16,15 @@ var jira_domain = ( function () {
 					sendResponse({type: "Success", user_domain: CURRENT_USER_DOMAIN});
 				});
 			}
-		}
+		},
+        getJiraDomain: function() {
+            if(CURRENT_USER_DOMAIN != "" || CURRENT_USER_DOMAIN != null) {
+                return CURRENT_USER_DOMAIN;
+            }
+            else {
+                window.open("popup/popup.html", "extension_popup", "width=400,height=100");
+            }
+            return null;
+        }
 	};
 })();
