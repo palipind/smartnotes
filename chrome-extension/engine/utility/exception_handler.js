@@ -20,8 +20,8 @@ var exception_handler = {
      * else open popup to make user enter jira domain.
      */
     handleAuthentication: function () {
-        var domain = jira_domain.getJiraDomain()
-        if(domain != null) {
+        var domain = jira_domain.getJiraDomain();
+        if(domain != "") {
             window.open('https://'+domain+'/', '_blank');
         }
         else {

@@ -7,21 +7,17 @@ var jira_domain = ( function () {
 				sendResponse({ type:"Success" });
 			}
 		},
-		loadJiraDomain: function (sendResponse) {
-			if(CURRENT_USER_DOMAIN) {
-				sendResponse({ type:"Success", user_domain: CURRENT_USER_DOMAIN });
-			} else {	
-				chrome.storage.sync.get("user_jira_domain", function (values) {
-					CURRENT_USER_DOMAIN = values.user_jira_domain; //lazy initialization
-					sendResponse({type: "Success", user_domain: CURRENT_USER_DOMAIN});
-				});
-			}
+		fetchJiraDomain: function (sendResponse) {
+			sendResponse({type: "Success", user_domain: this.getJiraDomain()});
 		},
-        getJiraDomain: function() {
-            if(CURRENT_USER_DOMAIN != "" || CURRENT_USER_DOMAIN != null) {
-                return CURRENT_USER_DOMAIN;
-            }
-            return null;
+        getJiraDomain: function () {
+        	if(!CURRENT_USER_DOMAIN) {
+        		chrome.storage.sync.get("user_jira_domain", function (values) {
+        			CURRENT_USER_DOMAIN = 
+        				(values.user_jira_domain == undefined) ? "" : values.user_jira_domain;
+        		});
+        	}
+        	return CURRENT_USER_DOMAIN;
         }
 	};
 })();
