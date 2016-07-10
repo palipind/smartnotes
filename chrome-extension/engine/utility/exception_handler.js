@@ -21,7 +21,7 @@ var exception_handler = {
      */
     handleAuthentication: function () {
         var domain = jira_domain.getJiraDomain();
-        if(domain != "") {
+        if(domain != "" || domain != null) {
             window.open('https://'+domain+'/', '_blank');
         }
         else {
@@ -29,6 +29,10 @@ var exception_handler = {
         }
     },
 
+    /**
+     * Handles if CURRENT_USER_DOMAIN is unset
+     * opens popup.html allowing user to set domain
+     */
     handleUnsetDomain: function () {
         window.open("popup/popup.html", "extension_popup", "width=400,height=100");
     }

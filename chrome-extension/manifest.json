@@ -12,25 +12,20 @@
   "background": {
 
    "scripts": [ "resources/jquery-2.2.4.js",
-                 "background.js",
-                 "engine/utility/jira_domain.js",
-                 "engine/utility/global_constants.js",
-                 "engine/utility/exception_handler.js",
-                 "customMenu.js"]
+                "background.js",
+                "engine/utility/jira_domain.js",
+                "engine/utility/global_constants.js",
+                "engine/utility/exception_handler.js",
+                "customMenu.js",
+                "engine/ticket-processor/ticket_process.js"]
   },
-  "content_scripts": [
-    {
-      "matches": ["http://*/*"],
-      "js": ["resources/jquery-2.2.4.js",
-             "content-script/content_script.js"]
-    }
-  ],
   "icons": {
     "64":"resources/icon.png"
   },
   "permissions": [
     "activeTab",          
     "https://*/*",          //set permissions for all pages
+    "http://*/*",
     "storage",              //for chrome storage api
     "contextMenus"
   ]
