@@ -11,6 +11,9 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
 			jira_domain.fetchJiraDomain(sendResponse);
 		}
         else if(request.type == "get_tickets") {
+            ticket_process.getTickets(function(ticketIds) {
+                //process ticketIds here//
+            });
         }
 	} catch(err) {
 		console.log('Error: Message Type or User Domain undefined');
