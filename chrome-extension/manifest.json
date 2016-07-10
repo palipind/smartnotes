@@ -15,15 +15,24 @@
                  "background.js",
                  "engine/utility/jira_domain.js",
                  "engine/utility/global_constants.js",
-                 "engine/utility/exception_handler.js"]
+                 "engine/utility/exception_handler.js",
+                 "customMenu.js"]
   },
+  "content_scripts": [
+    {
+      "matches": ["http://*/*"],
+      "js": ["resources/jquery-2.2.4.js",
+             "content-script/content_script.js"]
+    }
+  ],
   "icons": {
     "64":"resources/icon.png"
   },
   "permissions": [
     "activeTab",          
     "https://*/*",          //set permissions for all pages
-    "storage"              //for chrome storage api
+    "storage",              //for chrome storage api
+    "contextMenus"
   ]
 
 
