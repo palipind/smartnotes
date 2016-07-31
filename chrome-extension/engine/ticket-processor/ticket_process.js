@@ -11,7 +11,7 @@ var ticket_process = {
                 $.ajax({
                     url: 'https://'+domain+'/rest/api/2/search',
                     type: 'GET',
-                    data: 'jql=assignee='+assignee,
+                    data: 'jql=status!=done AND assignee='+assignee,
                     success: function(response) {
                         var issues = response["issues"];
                         var ticketIds = [];
