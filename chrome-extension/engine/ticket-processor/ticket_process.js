@@ -15,7 +15,6 @@ var ticket_process = {
                     success: function(response) {
                         var issues = response["issues"];
                         var ticketIds = [];
-
                         for(var i=0;i<issues.length;i++) {
                             ticketIds.push(issues[i]["key"]);
                         }
@@ -24,7 +23,23 @@ var ticket_process = {
                 });
             });
     },
-
+    addComment: function(issueId, selectionText) {
+        var domain = jira_domain.getJiraDomain();
+        var request_data = "{\"body\": "+JSON.stringify(selectionText)+"}";
+        $.ajax({
+            url: 'https://'+domain+'/rest/api/2/issue/'+issueId+'/comment',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            type: 'POST',
+            data: request_data
+        }).fail( function(response){
+            console.log('ERROR: \nStatus Code: '+response.status
+                + '\tStatus Text: '+response.statusText);
+            console.log(response);
+        });
+    },
     /**
      * A call to JIRA is made to get the username
      * of currently logged in user.
