@@ -6,7 +6,9 @@
   "version": "1.0",
 
   "browser_action": {
-    "default_icon": "resources/icon.png",
+    "default_icon": {
+      "19": "resources/valid_icon19.png",
+      "38": "resources/valid_icon38.png" },
     "default_popup": "popup/popup.html"
   },
   "background": {
@@ -17,7 +19,8 @@
                 "engine/utility/global_constants.js",
                 "engine/utility/exception_handler.js",
                 "customMenu.js",
-                "engine/ticket-processor/ticket_process.js"]
+                "engine/ticket-processor/ticket_process.js",
+                "engine/user-validation/user_validation.js"]
   },
   "icons": {
     "64":"resources/icon.png"

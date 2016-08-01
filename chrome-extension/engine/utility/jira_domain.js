@@ -10,6 +10,7 @@ var jira_domain = ( function () {
 		fetchJiraDomain: function (sendResponse) {
 			sendResponse({type: "Success", user_domain: this.getJiraDomain()});
 		},
+        //remove this method and use CURRENT_USER_DOMAIN wherever this method is used//
         getJiraDomain: function () {
         	if(!CURRENT_USER_DOMAIN) {
         		chrome.storage.sync.get("user_jira_domain", function (values) {
@@ -23,6 +24,7 @@ var jira_domain = ( function () {
         //jira domain before we can make get tickets request.
         //@TODO: Research if we can safely remove the null check in getJiraDomain
         //since we would already have the domain once loadJiraDomain is called.
+        //CURRENT_USER_DOMAIN should be set onLoad as the app uses the global variable to get the domain
         loadJiraDomain: function (callback) {
     		chrome.storage.sync.get("user_jira_domain", function (values) {
     			CURRENT_USER_DOMAIN = 
