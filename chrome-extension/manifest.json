@@ -11,6 +11,7 @@
       "38": "resources/valid_icon38.png" },
     "default_popup": "popup/popup.html"
   },
+
   "background": {
 
    "scripts": [ "resources/jquery-2.2.4.js",
