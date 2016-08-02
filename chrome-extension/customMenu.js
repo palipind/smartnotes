@@ -40,6 +40,14 @@ var menu = ( function () {
 				}
 			}
 			ISSUES_NUMBER = len;
+		},
+		cleanUp: function () {
+			for(i = 0; i < ISSUES_NUMBER; ++i)
+			{
+				id_s = "issues"+i;
+				chrome.contextMenus.remove(id_s);
+			}
+			ISSUES_NUMBER = 0;
 		}
 	};
 })();

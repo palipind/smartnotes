@@ -17,8 +17,6 @@ function addAssignedIssues()
     //call jira rest api every 5 secs
 	setTimeout(addAssignedIssues, 5000);
 }
-
-
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
 	try {
 		//TODO: Make this a switch case in future
