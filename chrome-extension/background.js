@@ -2,11 +2,26 @@ window.onload = function () {
 	//Get Jira Domain on background load.
 	jira_domain.loadJiraDomain(function() {
 		console.log(CURRENT_USER_DOMAIN);
-		//Design right click menu
-		menu.designContextMenu( function() {
+        changePopupIcon();
+        //Design right click menu
+        menu.designContextMenu( function() {
 			addAssignedIssues();
-		});	
-	}); 	
+		});
+	});
+}
+
+function changePopupIcon() {
+    authentication.handleValidation(function() {
+        if(VALID_DOMAIN && USER_AUTHENTICATION) {
+            chrome.browserAction.setIcon({ path: { "19": "resources/valid_icon19.png",
+                "38": "resources/valid_icon38.png" } });
+        }
+        else {
+            chrome.browserAction.setIcon({ path: { "19": "resources/invalid_icon19.png",
+                "38": "resources/invalid_icon38.png" } });
+        }
+    })
+    setTimeout(changePopupIcon, 5000);
 }
 
 function addAssignedIssues()

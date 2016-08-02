@@ -46,6 +46,7 @@ var ticket_process = {
      */
     getAssignee: function(domain, callback) {
         $.ajax({
+            //TODO change to api 2.0 version https://docs.atlassian.com/jira/REST/cloud/#api/2/myself-getUser
             url: 'https://'+domain+'/rest/gadget/1.0/currentUser',
             type: 'GET',
             success: function(response) {
