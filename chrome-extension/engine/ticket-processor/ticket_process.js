@@ -6,10 +6,9 @@ var ticket_process = {
      * as an argument when calling this method to handle the callback response.
      */
     getTickets: function(callback) {
-        var domain = jira_domain.getJiraDomain();
-        this.getAssignee(domain, function(assignee) {
+        this.getAssignee(function(assignee) {
                 $.ajax({
-                    url: 'https://'+domain+'/rest/api/2/search',
+                    url: 'https://'+CURRENT_USER_DOMAIN+'/rest/api/2/search',
                     type: 'GET',
                     data: 'jql=status!=done AND assignee='+assignee,
                     success: function(response) {
@@ -24,10 +23,9 @@ var ticket_process = {
             });
     },
     addComment: function(issueId, selectionText) {
-        var domain = jira_domain.getJiraDomain();
         var request_data = "{\"body\": "+JSON.stringify(selectionText)+"}";
         $.ajax({
-            url: 'https://'+domain+'/rest/api/2/issue/'+issueId+'/comment',
+            url: 'https://'+CURRENT_USER_DOMAIN+'/rest/api/2/issue/'+issueId+'/comment',
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
@@ -44,10 +42,10 @@ var ticket_process = {
      * A call to JIRA is made to get the username
      * of currently logged in user.
      */
-    getAssignee: function(domain, callback) {
+    getAssignee: function(callback) {
         $.ajax({
             //TODO change to api 2.0 version https://docs.atlassian.com/jira/REST/cloud/#api/2/myself-getUser
-            url: 'https://'+domain+'/rest/gadget/1.0/currentUser',
+            url: 'https://'+CURRENT_USER_DOMAIN+'/rest/gadget/1.0/currentUser',
             type: 'GET',
             success: function(response) {
                 var data = response["username"];

@@ -48,6 +48,16 @@ var menu = ( function () {
 				chrome.contextMenus.remove(id_s);
 			}
 			ISSUES_NUMBER = 0;
+		},
+		redesign: function () {
+			if(VALID_DOMAIN && USER_AUTHENTICATION) {
+				ticket_process.getTickets( function(ticketIds) {
+			        menu.updateContextMenu(ticketIds);
+			    });
+			} else {
+				//Clear the right-click menu
+				this.cleanUp();
+			}
 		}
 	};
 })();

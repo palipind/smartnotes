@@ -2,36 +2,20 @@ window.onload = function () {
 	//Get Jira Domain on background load.
 	jira_domain.loadJiraDomain(function() {
 		console.log(CURRENT_USER_DOMAIN);
-        changePopupIcon();
+
         //Design right click menu
         menu.designContextMenu( function() {
-			addAssignedIssues();
+			//Enable/Disable Plugin based on validation
+	        replay();
 		});
 	});
 }
 
-function changePopupIcon() {
-    authentication.handleValidation(function() {
-        if(VALID_DOMAIN && USER_AUTHENTICATION) {
-            chrome.browserAction.setIcon({ path: { "19": "resources/valid_icon19.png",
-                "38": "resources/valid_icon38.png" } });
-        }
-        else {
-            chrome.browserAction.setIcon({ path: { "19": "resources/invalid_icon19.png",
-                "38": "resources/invalid_icon38.png" } });
-        }
-    })
-    setTimeout(changePopupIcon, 5000);
+function replay() {
+	authentication.validate(); //Validate every 5 secs
+    setTimeout(replay, 5000); 
 }
 
-function addAssignedIssues()
-{
-	ticket_process.getTickets( function(ticketIds) {
-        menu.updateContextMenu(ticketIds);
-    });
-    //call jira rest api every 5 secs
-	setTimeout(addAssignedIssues, 5000);
-}
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
 	try {
 		//TODO: Make this a switch case in future

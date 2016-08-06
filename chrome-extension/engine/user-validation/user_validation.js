@@ -6,7 +6,6 @@ var authentication = {
      * 1) Valid Jira domain - If response contains displayName or error response is 401(Unauthorized)
      * 2) User authentication - Parsing response throws exception or error response
      */
-
     handleValidation: function(callback) {
         $.ajax({
             url: 'https://'+CURRENT_USER_DOMAIN+'/rest/api/2/myself',
@@ -33,7 +32,21 @@ var authentication = {
                 }
                 USER_AUTHENTICATION = false;
                 callback();
+            },
+            timeout: 3000
+        });
+    },
+    validate: function() {
+        this.handleValidation(function() {
+            if(VALID_DOMAIN && USER_AUTHENTICATION) {
+                chrome.browserAction.setIcon({ path: { "19": "resources/valid_icon19.png",
+                    "38": "resources/valid_icon38.png" } });
             }
+            else {
+                chrome.browserAction.setIcon({ path: { "19": "resources/invalid_icon19.png",
+                    "38": "resources/invalid_icon38.png" } });
+            }
+            menu.redesign();
         });
     }
 }
