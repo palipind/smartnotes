@@ -6,7 +6,7 @@ var authentication = {
      * 1) Valid Jira domain - If response contains displayName or error response is 401(Unauthorized)
      * 2) User authentication - Parsing response throws exception or error response
      */
-    handleValidation: function(callback) {
+    computeGlobalAuthConstants: function(callback) {
         $.ajax({
             url: 'https://'+CURRENT_USER_DOMAIN+'/rest/api/2/myself',
             type: 'GET',
@@ -36,8 +36,9 @@ var authentication = {
             timeout: 3000
         });
     },
+
     validate: function() {
-        this.handleValidation(function() {
+        this.computeGlobalAuthConstants(function() {
             if(VALID_DOMAIN && USER_AUTHENTICATION) {
                 chrome.browserAction.setIcon({ path: { "19": "resources/valid_icon19.png",
                     "38": "resources/valid_icon38.png" } });

@@ -13,7 +13,12 @@ window.onload = function () {
 
 function replay() {
 	authentication.validate(); //Validate every 5 secs
+    refreshPopup();
     setTimeout(replay, 5000); 
+}
+
+function refreshPopup() {
+    chrome.runtime.sendMessage({type: "refresh_popup", valid_domain: VALID_DOMAIN, user_authentication:USER_AUTHENTICATION});
 }
 
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {

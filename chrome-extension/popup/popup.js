@@ -24,5 +24,43 @@ window.onload =  function () {
 				});
 			}
 		});
-	}
-}
+	};
+
+    document.getElementById('loginButton').onclick = function () {
+        var domain = "http://"+document.getElementById('user_domain').value;
+        window.open(domain);
+    };
+};
+    chrome.runtime.onMessage.addListener(function (request) {
+        if(request.type == "refresh_popup") {
+            loadPopupBody(request);
+        }
+    });
+
+    function loadPopupBody(request) {
+        if (request.valid_domain == true) {
+            document.getElementById('imgDomainVerified').className = "visible";
+            document.getElementById('imgDomainUnverified').className = "invisible";
+        }
+        else {
+            document.getElementById('imgDomainVerified').className = "invisible";
+             document.getElementById('imgDomainUnverified').className = "visible";
+        }
+
+        if (request.user_authentication == true) {
+             document.getElementById('imgAuthVerified').className = "visible";
+             document.getElementById('imgAuthUnverified').className = "invisible";
+        }
+        else {
+             document.getElementById('imgAuthVerified').className = "invisible";
+             document.getElementById('imgAuthUnverified').className = "visible";
+        }
+
+        if (request.valid_domain == true && request.user_authentication == false) {
+            document.getElementById('loginButton').className = "visible";
+        }
+        else {
+            document.getElementById('loginButton').className = "invisible";
+        }
+    }
+

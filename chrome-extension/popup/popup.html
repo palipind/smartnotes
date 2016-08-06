@@ -1,14 +1,27 @@
 <!doctype html>
 <html>
 <head>
+    <link rel="stylesheet" type="text/css" href="smartnotespopup.css">
 	<title>smartnotes extension popup</title>
 	<script src="popup.js"></script>
 </head>
 <body>
 	<div id="container"> 
 		 <!-- This is just a prototype, will need designing later-->
-		<input type="text" id="user_domain" />
-		<input type="button" id="set_domain" value="SET"/> 
+		<label id ="domain_validated">Domain Validated</label>
+        &nbsp;&nbsp;&nbsp;
+        <img id="imgDomainVerified" class="invisible" src="/resources/ok.png">
+        <img id="imgDomainUnverified" class="invisible" src="/resources/cancel.png">
+        <br>
+        <input type="text" id="user_domain" /><br>
+        <input type="button" id="set_domain" value="SET"/><br>
+        <label id ="user_authenticated">User Authenticated</label>
+        &nbsp;&nbsp;&nbsp;
+        <img id="imgAuthVerified" class="invisible" src="/resources/ok.png">
+        <img id="imgAuthUnverified" class="invisible" src="/resources/cancel.png">
+        <br>
+        <input type="button" id="loginButton" value="Log In" class="invisible"/>
+
 	</div>
 </body>
 </html>
