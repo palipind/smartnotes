@@ -33,36 +33,38 @@ window.onload =  function () {
         window.open(domain);
     };
 };
-    chrome.runtime.onMessage.addListener(function (request) {
-        if(request.type == "refresh_popup") {
-            loadPopupBody(request.valid_domain, request.user_authentication);
-        }
-    });
 
-    function loadPopupBody(isValidDomain, isAuthenticated) {
-        if (isValidDomain == true) {
-            document.getElementById('imgDomainVerified').className = "visible";
-            document.getElementById('imgDomainUnverified').className = "invisible";
-        }
-        else {
-            document.getElementById('imgDomainVerified').className = "invisible";
-             document.getElementById('imgDomainUnverified').className = "visible";
-        }
-
-        if (isAuthenticated == true) {
-             document.getElementById('imgAuthVerified').className = "visible";
-             document.getElementById('imgAuthUnverified').className = "invisible";
-        }
-        else {
-             document.getElementById('imgAuthVerified').className = "invisible";
-             document.getElementById('imgAuthUnverified').className = "visible";
-        }
-
-        if (isValidDomain == true && isAuthenticated == false) {
-            document.getElementById('loginButton').className = "visible";
-        }
-        else {
-            document.getElementById('loginButton').className = "invisible";
-        }
+chrome.runtime.onMessage.addListener(function (request) {
+    if(request.type == "refresh_popup") {
+        loadPopupBody(request.valid_domain, request.user_authentication);
     }
+});
+
+function loadPopupBody(isValidDomain, isAuthenticated) {
+	
+    if (isValidDomain == true) {
+        document.getElementById('imgDomainVerified').className = "visible";
+        document.getElementById('imgDomainUnverified').className = "invisible";
+    }
+    else {
+        document.getElementById('imgDomainVerified').className = "invisible";
+         document.getElementById('imgDomainUnverified').className = "visible";
+    }
+
+    if (isAuthenticated == true) {
+         document.getElementById('imgAuthVerified').className = "visible";
+         document.getElementById('imgAuthUnverified').className = "invisible";
+    }
+    else {
+         document.getElementById('imgAuthVerified').className = "invisible";
+         document.getElementById('imgAuthUnverified').className = "visible";
+    }
+
+    if (isValidDomain == true && isAuthenticated == false) {
+        document.getElementById('loginButton').className = "visible";
+    }
+    else {
+        document.getElementById('loginButton').className = "invisible";
+    }
+}
 

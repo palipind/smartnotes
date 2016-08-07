@@ -19,7 +19,8 @@
                 "engine/utility/jira_domain.js",
                 "engine/utility/global_constants.js",
                 "engine/utility/exception_handler.js",
-                "customMenu.js",
+                "engine/utility/response_builder.js",
+                "engine/context-menu/menu.js",
                 "engine/ticket-processor/ticket_process.js",
                 "engine/user-validation/user_validation.js"]
   },

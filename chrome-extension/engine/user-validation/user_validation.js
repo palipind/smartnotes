@@ -36,20 +36,5 @@ var authentication = {
             },
             timeout: 3000
         });
-    },
-
-    validate: function() {
-        this.computeGlobalAuthConstants(function() {
-            if(VALID_DOMAIN && USER_AUTHENTICATION) {
-                chrome.browserAction.setIcon({ path: { "19": "resources/valid_icon19.png",
-                    "38": "resources/valid_icon38.png" } });
-            }
-            else {
-                chrome.browserAction.setIcon({ path: { "19": "resources/invalid_icon19.png",
-                    "38": "resources/invalid_icon38.png" } });
-            }
-            //menu.redesign() should be called only once computeGlobalAuthConstants returns. USER_NAME is set by that call
-            menu.redesign();
-        });
     }
 }
