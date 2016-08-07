@@ -11,7 +11,7 @@ window.onload = function () {
 	});
 }
 
-function replay() {
+function replay() {//
 	authentication.validate();
     refreshPopup();
     setTimeout(replay, 5000);
