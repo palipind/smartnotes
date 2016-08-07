@@ -1,12 +1,14 @@
 window.onload =  function () {
 	//Function to set Text Box with set Jira Domain
-	chrome.runtime.sendMessage({type: "get_domain"}, function (response) {
+	chrome.runtime.sendMessage({type: "get_startup_properties"}, function (response) {
 		if(response.type == "Error") {
 			console.log("Error: "+ response.emsg);
 			document.getElementById('user_domain').value = "";
 		}
 		console.log("Setting Text with value: " + response.user_domain);
 		document.getElementById('user_domain').value = response.user_domain;
+        loadPopupBody(response.valid_domain, response.user_authentication);
+
 	});
 
 	document.getElementById('set_domain').onclick = function () {
@@ -15,7 +17,7 @@ window.onload =  function () {
 			if(response.type == "Error") {
 				console.log("Error: " + response.emsg);
 				console.log("Resetting the user domain");
-				chrome.runtime.sendMessage({type: "get_domain"}, function (response) {
+				chrome.runtime.sendMessage({type: "get_startup_properties"}, function (response) {
 					if(response.type == "Error") {
 						document.getElementById('user_domain').value = "";
 					} else {
@@ -33,12 +35,12 @@ window.onload =  function () {
 };
     chrome.runtime.onMessage.addListener(function (request) {
         if(request.type == "refresh_popup") {
-            loadPopupBody(request);
+            loadPopupBody(request.valid_domain, request.user_authentication);
         }
     });
 
-    function loadPopupBody(request) {
-        if (request.valid_domain == true) {
+    function loadPopupBody(isValidDomain, isAuthenticated) {
+        if (isValidDomain == true) {
             document.getElementById('imgDomainVerified').className = "visible";
             document.getElementById('imgDomainUnverified').className = "invisible";
         }
@@ -47,7 +49,7 @@ window.onload =  function () {
              document.getElementById('imgDomainUnverified').className = "visible";
         }
 
-        if (request.user_authentication == true) {
+        if (isAuthenticated == true) {
              document.getElementById('imgAuthVerified').className = "visible";
              document.getElementById('imgAuthUnverified').className = "invisible";
         }
@@ -56,7 +58,7 @@ window.onload =  function () {
              document.getElementById('imgAuthUnverified').className = "visible";
         }
 
-        if (request.valid_domain == true && request.user_authentication == false) {
+        if (isValidDomain == true && isAuthenticated == false) {
             document.getElementById('loginButton').className = "visible";
         }
         else {

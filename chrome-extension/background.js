@@ -12,9 +12,9 @@ window.onload = function () {
 }
 
 function replay() {
-	authentication.validate(); //Validate every 5 secs
+	authentication.validate();
     refreshPopup();
-    setTimeout(replay, 5000); 
+    setTimeout(replay, 5000);
 }
 
 function refreshPopup() {
@@ -26,8 +26,9 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
 		//TODO: Make this a switch case in future
 		if(request.type == "set_domain") {
 			jira_domain.storeJiraDomain(request, sendResponse);
-		} else if(request.type == "get_domain") {
-			jira_domain.fetchJiraDomain(sendResponse);
+		} else if(request.type == "get_startup_properties") {
+            sendResponse({type: "Success", user_domain: CURRENT_USER_DOMAIN, valid_domain: VALID_DOMAIN,
+                user_authentication: USER_AUTHENTICATION});
 		}
 	} catch(err) {
 		console.log('Error: Message Type or User Domain undefined');

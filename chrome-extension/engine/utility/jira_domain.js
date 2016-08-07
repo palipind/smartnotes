@@ -8,9 +8,6 @@ var jira_domain = ( function () {
                 authentication.validate();
 			}
 		},
-		fetchJiraDomain: function (sendResponse) {
-			sendResponse({type: "Success", user_domain: CURRENT_USER_DOMAIN});
-		},
         loadJiraDomain: function (callback) {
     		chrome.storage.sync.get("user_jira_domain", function (values) {
     			CURRENT_USER_DOMAIN = 
