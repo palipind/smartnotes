@@ -12,9 +12,10 @@ var authentication = {
             type: 'GET',
             success: function(response) {
                 try {
-                    var data = response["displayName"];
+                    var username = response["name"];
                     VALID_DOMAIN = true;
-                    USER_AUTHENTICATION = data != null ? true : false;
+                    USER_AUTHENTICATION = username != null ? true : false;
+                    USER_NAME = username;
                 }
                 catch (e) {
                     VALID_DOMAIN = false;
@@ -47,6 +48,7 @@ var authentication = {
                 chrome.browserAction.setIcon({ path: { "19": "resources/invalid_icon19.png",
                     "38": "resources/invalid_icon38.png" } });
             }
+            //menu.redesign() should be called only once computeGlobalAuthConstants returns. USER_NAME is set by that call
             menu.redesign();
         });
     }

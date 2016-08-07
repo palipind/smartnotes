@@ -6,21 +6,19 @@ var ticket_process = {
      * as an argument when calling this method to handle the callback response.
      */
     getTickets: function(callback) {
-        this.getAssignee(function(assignee) {
-                $.ajax({
-                    url: 'https://'+CURRENT_USER_DOMAIN+'/rest/api/2/search',
-                    type: 'GET',
-                    data: 'jql=status!=done AND assignee='+assignee,
-                    success: function(response) {
-                        var issues = response["issues"];
-                        var ticketIds = [];
-                        for(var i=0;i<issues.length;i++) {
-                            ticketIds.push(issues[i]["key"]);
-                        }
-                        callback(ticketIds);
-                    }
-                });
-            });
+        $.ajax({
+            url: 'https://'+CURRENT_USER_DOMAIN+'/rest/api/2/search',
+            type: 'GET',
+            data: 'jql=status!=done AND assignee='+USER_NAME,
+            success: function(response) {
+                var issues = response["issues"];
+                var ticketIds = [];
+                for(var i=0;i<issues.length;i++) {
+                    ticketIds.push(issues[i]["key"]);
+                }
+                callback(ticketIds);
+            }
+        });
     },
     addComment: function(issueId, selectionText) {
         var request_data = "{\"body\": "+JSON.stringify(selectionText)+"}";
@@ -36,21 +34,6 @@ var ticket_process = {
             console.log('ERROR: \nStatus Code: '+response.status
                 + '\tStatus Text: '+response.statusText);
             console.log(response);
-        });
-    },
-    /**
-     * A call to JIRA is made to get the username
-     * of currently logged in user.
-     */
-    getAssignee: function(callback) {
-        $.ajax({
-            //TODO change to api 2.0 version https://docs.atlassian.com/jira/REST/cloud/#api/2/myself-getUser
-            url: 'https://'+CURRENT_USER_DOMAIN+'/rest/gadget/1.0/currentUser',
-            type: 'GET',
-            success: function(response) {
-                var data = response["username"];
-                callback(data);
-            }
         });
     }
 }
