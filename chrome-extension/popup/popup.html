@@ -1,28 +1,73 @@
 <!doctype html>
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="smartnotespopup.css">
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> 
+    <link rel="stylesheet" type="text/css" href="css/smartnotespopup.css">
+    <link rel="stylesheet" type="text/css" href="css/materialize.css">
+
 	<title>smartnotes extension popup</title>
-	<script src="popup.js"></script>
+	<script src="js/popup.js"></script>
 </head>
 <body>
-	<div id="container"> 
-		 <!-- This is just a prototype, will need designing later-->
-		<label id ="domain_validated">Domain Validated</label>
-        &nbsp;&nbsp;&nbsp;
-        <img id="imgDomainVerified" class="invisible" src="/resources/ok.png">
-        <img id="imgDomainUnverified" class="invisible" src="/resources/cancel.png">
-        <br>
-        <input type="text" id="user_domain" /><br>
-        <input type="button" id="set_domain" value="SET"/><br>
-        <label id ="user_authenticated">User Authenticated</label>
-        &nbsp;&nbsp;&nbsp;
-        <img id="imgAuthVerified" class="invisible" src="/resources/ok.png">
-        <img id="imgAuthUnverified" class="invisible" src="/resources/cancel.png">
-        <br>
-        <input type="button" id="loginButton" value="Log In" class="invisible"/>
+	<div id="container" class="container">
+        <div class="divider"></div>
+        <div class="section">
+            <!-- section for Smartnotes heading and some text !-->
+            <h5>Smartnotes</h5>
+            <p>Stuff</p>
+        </div>
+        <div class="divider"></div>
+        <div class="section">
+            <div class="row">
+                <div class="col s4"> 
+                    <label id ="domain_validated">Domain Validated</label>
+                </div>
+                <div class="col s4">
+                    <img id="imgDomainVerified" class="invisible" src="/resources/ok.png">
+                </div>
+                <div class="col s4">
+                    <img id="imgDomainUnverified" class="invisible" src="/resources/cancel.png">
+                </div>
+            </div>
 
+            <div class="row">
+                <div class="col s12">
+                    <input type="text" id="user_domain" />
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col s12">
+                    <!-- <input type="button" id="set_domain" value="SET"/> !-->
+                    <button id="set_domain" class="btn waves-effect waves-light center-align" 
+                        type="submit" name="action">Submit
+                        <i class="material-icons right">send</i>
+                     </button>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col s4">
+                    <label id ="user_authenticated">User Authenticated</label>
+                </div>
+                <div class="col s4">
+                    <img id="imgAuthVerified" class="invisible" src="/resources/ok.png">
+                </div>
+                <div class="col s4">
+                    <img id="imgAuthUnverified" class="invisible" src="/resources/cancel.png">
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col s12">
+                    <input type="button" id="loginButton" value="Log In" class="invisible"/>
+                </div>
+            </div>
+        </div>
 	</div>
+    <script type="text/javascript" src="../resources/jquery-2.2.4.js"></script>
+    <script type="text/javascript" src="js/materialize.js"></script>
+
 </body>
 </html>
 
