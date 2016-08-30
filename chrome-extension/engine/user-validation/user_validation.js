@@ -10,7 +10,10 @@ var authentication = {
         $.ajax({
             url: 'https://'+CURRENT_USER_DOMAIN+'/rest/api/2/myself',
             type: 'GET',
-            success: function(response) {
+            beforeSend: function(xhr) {
+                xhr.domain = CURRENT_USER_DOMAIN;
+            },
+            success: function(response, status, xhr) {
                 try {
                     var username = response["name"];
                     VALID_DOMAIN = true;
@@ -21,9 +24,12 @@ var authentication = {
                     VALID_DOMAIN = false;
                     USER_AUTHENTICATION = false;
                 }
-                callback();
+
+                //Callback only if USER_DOMAIN has not changed between request->reponse
+                if(xhr.domain == CURRENT_USER_DOMAIN)
+                    callback();
             },
-            error: function(xhr, status, errorThrown) {
+            error: function(xhr, status, errorThrown) {                
                 //can there be a case when domain is invalid and it returns error//
                 if (xhr.status == 401 || errorThrown == AUTHENTICATION_ERROR_THROWN) {
                     VALID_DOMAIN = true;
@@ -32,7 +38,10 @@ var authentication = {
                     VALID_DOMAIN = false;
                 }
                 USER_AUTHENTICATION = false;
-                callback();
+                
+                //Callback only if USER_DOMAIN has not changed between request->reponse
+                if(xhr.domain == CURRENT_USER_DOMAIN)
+                    callback();
             },
             timeout: 3000
         });

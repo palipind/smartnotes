@@ -13,6 +13,7 @@ window.onload =  function () {
 
 	document.getElementById('set_domain').onclick = function () {
 		var user_domain = document.getElementById('user_domain').value;
+        $('#wait_indicator').removeClass("hide");
 		chrome.runtime.sendMessage({type: "set_domain", user_domain: user_domain}, function (response) {
 			if(response.type == "Error") {
 				console.log("Error: " + response.emsg);
@@ -41,14 +42,19 @@ chrome.runtime.onMessage.addListener(function (request) {
 });
 
 function loadPopupBody(isValidDomain, isAuthenticated) {
-	
+	$('#wait_indicator').addClass("hide");
     if (isValidDomain == true) {
-        document.getElementById('imgDomainVerified').className = "visible";
-        document.getElementById('imgDomainUnverified').className = "invisible";
+        $('#domain_success').removeClass("hide");
+        $('#domain_error').addClass("hide");
+        $('#user_domain').removeClass("invalid");
+        $('#label_user_domain').removeClass("red-text");
+
     }
     else {
-        document.getElementById('imgDomainVerified').className = "invisible";
-         document.getElementById('imgDomainUnverified').className = "visible";
+        $('#domain_error').removeClass("hide");
+        $('#domain_success').addClass("hide");
+        $('#user_domain').addClass("invalid");
+        $('#label_user_domain').addClass("red-text");
     }
 
     if (isAuthenticated == true) {

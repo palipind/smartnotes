@@ -19,33 +19,46 @@
         <div class="divider"></div>
         <div class="section">
             <div class="row">
-                <div class="col s4"> 
-                    <label id ="domain_validated">Domain Validated</label>
+                <div class="input-field col s10">
+                    <input type="text" id="user_domain"/>
+                    <label id="label_user_domain" for="user_domain">Jira Domain</label>
                 </div>
-                <div class="col s4">
-                    <img id="imgDomainVerified" class="invisible" src="/resources/ok.png">
+                <div class="col s2">
+                    <i id="domain_error" class="material-icons right red-text hide">report_problem</i>
+                    <i id="domain_success" class="material-icons right green-text hide">done</i>                    
                 </div>
-                <div class="col s4">
-                    <img id="imgDomainUnverified" class="invisible" src="/resources/cancel.png">
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col s12">
-                    <input type="text" id="user_domain" />
-                </div>
-            </div>
-            
-            <div class="row">
-                <div class="col s12">
+                <div class="col s10 center-align">
                     <!-- <input type="button" id="set_domain" value="SET"/> !-->
-                    <button id="set_domain" class="btn waves-effect waves-light center-align" 
-                        type="submit" name="action">Submit
-                        <i class="material-icons right">send</i>
-                     </button>
+                    <a id="set_domain" class="btn waves-effect waves-light btn-small" 
+                        type="submit" name="action">Submit<i class="material-icons right">send</i>
+                     </a>
+                </div>
+                <div id="wait_indicator" class="preloader-wrapper custom active hide">
+                    <div class="spinner-layer spinner-green-only">
+                      <div class="circle-clipper left">
+                        <div class="circle"></div>
+                      </div><div class="gap-patch">
+                        <div class="circle"></div>
+                      </div><div class="circle-clipper right">
+                        <div class="circle"></div>
+                      </div>
+                    </div>
+                </div>
+            
+            </div>
+            <!--
+            <div class="row">
+                <div class="col s12 center-align">
+                    <a id="set_domain" class="btn waves-effect waves-light btn-small" 
+                        type="submit" name="action">Submit<i class="material-icons right">send</i>
+                     </a>
                 </div>
             </div>
+            !-->
 
+        </div>
+        <div class="divider"></div>
+        <div class="section">
             <div class="row">
                 <div class="col s4">
                     <label id ="user_authenticated">User Authenticated</label>
@@ -57,7 +70,6 @@
                     <img id="imgAuthUnverified" class="invisible" src="/resources/cancel.png">
                 </div>
             </div>
-            
             <div class="row">
                 <div class="col s12">
                     <input type="button" id="loginButton" value="Log In" class="invisible"/>

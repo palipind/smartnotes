@@ -9,3 +9,8 @@ body {
 	width: 250px;
 	height: 200px;
 }
+
+.preloader-wrapper.custom {
+  width: 24px;
+  height: 24px;
+}
