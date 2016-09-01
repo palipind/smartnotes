@@ -56,15 +56,15 @@ function loadPopupBody(isValidDomain, isAuthenticated) {
         $('#user_domain').addClass("invalid");
         $('#label_user_domain').addClass("red-text");
     }
-    
+
     if(isValidDomain == true && isAuthenticated == true) {
-        document.getElementById('auth_row').style.visibility = "hidden";
+        $('#auth_row').addClass("hide");
     }
     else if (isValidDomain == true && isAuthenticated == false) {
-        document.getElementById('auth_row').style.visibility = "visible";
+        $('#auth_row').removeClass("hide");
     }
     else {
-        document.getElementById('auth_row').style.visibility = "hidden";
+        $('#auth_row').addClass("hide");
     }
 }
 
