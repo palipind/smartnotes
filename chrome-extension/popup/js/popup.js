@@ -57,20 +57,14 @@ function loadPopupBody(isValidDomain, isAuthenticated) {
         $('#label_user_domain').addClass("red-text");
     }
 
+    console.log(isAuthenticated);
     if(isValidDomain == true && isAuthenticated == true) {
-        document.getElementById('imgDomainVerified').className = "visible";
-        document.getElementById('imgDomainUnverified').className = "invisible";
         document.getElementById('auth_row').style.visibility = "hidden";
     }
     else if (isValidDomain == true && isAuthenticated == false) {
-        document.getElementById('imgDomainVerified').className = "visible";
-        document.getElementById('imgDomainUnverified').className = "invisible";
         document.getElementById('auth_row').style.visibility = "visible";
-
     }
     else {
-        document.getElementById('imgDomainVerified').className = "invisible";
-        document.getElementById('imgDomainUnverified').className = "visible";
         document.getElementById('auth_row').style.visibility = "hidden";
     }
 }
