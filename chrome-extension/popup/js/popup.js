@@ -29,7 +29,7 @@ window.onload =  function () {
 		});
 	};
 
-    document.getElementById('loginButton').onclick = function () {
+    document.getElementById('auth_row').onclick = function () {
         var domain = "http://"+document.getElementById('user_domain').value;
         window.open(domain);
     };
@@ -57,20 +57,21 @@ function loadPopupBody(isValidDomain, isAuthenticated) {
         $('#label_user_domain').addClass("red-text");
     }
 
-    if (isAuthenticated == true) {
-         document.getElementById('imgAuthVerified').className = "visible";
-         document.getElementById('imgAuthUnverified').className = "invisible";
+    if(isValidDomain == true && isAuthenticated == true) {
+        document.getElementById('imgDomainVerified').className = "visible";
+        document.getElementById('imgDomainUnverified').className = "invisible";
+        document.getElementById('auth_row').style.visibility = "hidden";
     }
-    else {
-         document.getElementById('imgAuthVerified').className = "invisible";
-         document.getElementById('imgAuthUnverified').className = "visible";
-    }
+    else if (isValidDomain == true && isAuthenticated == false) {
+        document.getElementById('imgDomainVerified').className = "visible";
+        document.getElementById('imgDomainUnverified').className = "invisible";
+        document.getElementById('auth_row').style.visibility = "visible";
 
-    if (isValidDomain == true && isAuthenticated == false) {
-        document.getElementById('loginButton').className = "visible";
     }
     else {
-        document.getElementById('loginButton').className = "invisible";
+        document.getElementById('imgDomainVerified').className = "invisible";
+        document.getElementById('imgDomainUnverified').className = "visible";
+        document.getElementById('auth_row').style.visibility = "hidden";
     }
 }
 

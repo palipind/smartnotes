@@ -1,84 +1,85 @@
 <!doctype html>
 <html>
 <head>
-    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> 
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/smartnotespopup.css">
     <link rel="stylesheet" type="text/css" href="css/materialize.css">
 
-	<title>smartnotes extension popup</title>
-	<script src="js/popup.js"></script>
+    <title>smartnotes extension popup</title>
+    <script src="js/popup.js"></script>
 </head>
 <body>
-	<div id="container" class="container">
-        <div class="divider"></div>
-        <div class="section">
-            <!-- section for Smartnotes heading and some text !-->
-            <h5>Smartnotes</h5>
-            <p>Stuff</p>
+<div id="container" class="container">
+    <div id="header-container" class="section">
+        <!-- section for Smartnotes heading and some text !-->
+        <div class="row">
+            <div class="col s4">
+                <img id="smartnotes-icon" src="notepad.png">
+            </div>
+            <div class="col s8">
+                <h5>Smartnotes</h5>
+            </div>
         </div>
-        <div class="divider"></div>
-        <div class="section">
-            <div class="row">
-                <div class="input-field col s10">
-                    <input type="text" id="user_domain"/>
-                    <label id="label_user_domain" for="user_domain">Jira Domain</label>
-                </div>
-                <div class="col s2">
-                    <i id="domain_error" class="material-icons right red-text hide">report_problem</i>
-                    <i id="domain_success" class="material-icons right green-text hide">done</i>                    
-                </div>
-                <div class="col s10 center-align">
-                    <!-- <input type="button" id="set_domain" value="SET"/> !-->
-                    <a id="set_domain" class="btn waves-effect waves-light btn-small" 
-                        type="submit" name="action">Submit<i class="material-icons right">send</i>
-                     </a>
-                </div>
-                <div id="wait_indicator" class="preloader-wrapper custom active hide">
-                    <div class="spinner-layer spinner-green-only">
-                      <div class="circle-clipper left">
-                        <div class="circle"></div>
-                      </div><div class="gap-patch">
-                        <div class="circle"></div>
-                      </div><div class="circle-clipper right">
-                        <div class="circle"></div>
-                      </div>
-                    </div>
-                </div>
-            
+    </div>
+
+    <div class="divider"></div>
+
+    <!--This is the main body-->
+    <div id="main-container" class="section">
+        <div class="row">
+            <div class="input-field col s10">
+                <input type="text" id="user_domain"/>
+                <label id="label_user_domain" for="user_domain">Jira Domain</label>
             </div>
-            <!--
-            <div class="row">
-                <div class="col s12 center-align">
-                    <a id="set_domain" class="btn waves-effect waves-light btn-small" 
-                        type="submit" name="action">Submit<i class="material-icons right">send</i>
-                     </a>
+            <div class="col s2">
+                <i id="domain_error" class="material-icons right red-text hide">report_problem</i>
+                <i id="domain_success" class="material-icons right green-text hide">done</i>
+            </div>
+            <div class="col s10 center-align">
+                <!-- <input type="button" id="set_domain" value="SET"/> !-->
+                <a id="set_domain" class="btn waves-effect waves-light btn-small"
+                   type="submit" name="action">Submit<i class="material-icons right">send</i>
+                </a>
+            </div>
+            <div id="wait_indicator" class="preloader-wrapper custom active hide">
+                <div class="spinner-layer spinner-green-only">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div><div class="gap-patch">
+                    <div class="circle"></div>
+                </div><div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
                 </div>
             </div>
-            !-->
 
         </div>
         <div class="divider"></div>
-        <div class="section">
-            <div class="row">
-                <div class="col s4">
-                    <label id ="user_authenticated">User Authenticated</label>
-                </div>
-                <div class="col s4">
-                    <img id="imgAuthVerified" class="invisible" src="/resources/ok.png">
-                </div>
-                <div class="col s4">
-                    <img id="imgAuthUnverified" class="invisible" src="/resources/cancel.png">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col s12">
-                    <input type="button" id="loginButton" value="Log In" class="invisible"/>
+        <div id="auth_row" class="row">
+            <div class="col s12">
+                <div class="collection" style="border: hidden; text-align: center">
+                    <a id="login" href="#!" class="collection-item">Log in to JIRA</a>
                 </div>
             </div>
         </div>
-	</div>
-    <script type="text/javascript" src="../resources/jquery-2.2.4.js"></script>
-    <script type="text/javascript" src="js/materialize.js"></script>
+    </div>
+    <!-- Main body ends here -->
+
+    <!-- This is the footer -->
+    <div id="footer-container" class="section">
+        <footer class="page-footer" style="padding: 0%">
+            <div class="footer-copyright">
+                <div class="container">
+                    @ 2016 smartnotes Copyright
+                    <a class="grey-text text-lighten-4 right" href="#!">About Us</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+</div>
+<script type="text/javascript" src="../resources/jquery-2.2.4.js"></script>
+<script type="text/javascript" src="js/materialize.js"></script>
 
 </body>
 </html>
