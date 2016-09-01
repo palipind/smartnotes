@@ -56,8 +56,7 @@ function loadPopupBody(isValidDomain, isAuthenticated) {
         $('#user_domain').addClass("invalid");
         $('#label_user_domain').addClass("red-text");
     }
-
-    console.log(isAuthenticated);
+    
     if(isValidDomain == true && isAuthenticated == true) {
         document.getElementById('auth_row').style.visibility = "hidden";
     }
