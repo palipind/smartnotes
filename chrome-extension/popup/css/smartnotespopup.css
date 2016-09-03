@@ -7,7 +7,7 @@
 
 body {
 	width: 250px;
-	height: 200px;
+
 }
 
 .preloader-wrapper.custom {
@@ -19,16 +19,21 @@ body {
     font-size: 12px;
 }
 
-#smartnotes-icon {
-    width:100%;
-    height: 100%;
-}
-
 #auth_row {
     border: hidden;
-    text-align: center;
 }
 
 #smartnotes-footer {
     padding: 0%;
+}
+
+.smartmotes-header {
+    background-color: #232f3e;
+    color: #FFFFFF;
+    font-family: 'Architects Daughter', cursive;
+
+}
+
+#smartnotes-icon {
+    width:25px;
 }
